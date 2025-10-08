@@ -1,2 +1,16 @@
 # scRNAseq-GSE190887-AS
 Analysis of publicly available scRNAseq dataset GSE190887 from Dr. Benjamin Humphrey's Lab.
+library(data.table)
+library(GEOquery)
+library(R.utils)
+library(org.Mm.eg.db)
+library(AnnotationDbi)
+library(DESeq2)
+library(Matrix)
+library(Seurat)
+library(data.table)
+library(ggplot2)
+library(irlba)
+library(SeuratDisk)
+library(scales)
+library(dplyr)
