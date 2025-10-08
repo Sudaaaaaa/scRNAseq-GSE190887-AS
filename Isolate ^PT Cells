@@ -1,0 +1,9 @@
+pt_cells <- subset(seurat_obj1@meta.data, subset = grepl("^PT",celltype))
+pt_barcodes <- rownames(seurat_obj1@meta.data[grepl("^PT", seurat_obj1@meta.data$celltype), ])
+pt_cells <- subset(seurat_obj1, cells = pt_barcodes)
+pt_cells <- SetIdent(pt_cells, value = "orig.ident")
+pt_cells <- RenameIdents(object = pt_cells, 'Health' = "Healthy", 'IRI_6hrs' = "IRI 06 hrs", 'IRI_Day2' = "IRI Day 02", 'IRI_Day7' = "IRI Day 07", 'IRI_Day14' = "IRI Day 14", 'IRI_Day28' = "IRI Day 28", 'UUO_Day2' = "UUO Day 02", 'UUO_Day4' = "UUO Day 04", 'UUO_Day6' = "UUO Day 06", 'UUO_Day10' = "UUO Day 10", 'UUO_Day14' = "UUO Day 14")
+
+desired_order <- c("Healthy","IRI 06 hrs","IRI Day 02","IRI Day 07","IRI Day 14",
+                   "IRI Day 28","UUO Day 02","UUO Day 04","UUO Day 06","UUO Day 10","UUO Day 14")
+pt_cells$orig.ident <- factor(pt_cells$orig.ident, levels = desired_order)
